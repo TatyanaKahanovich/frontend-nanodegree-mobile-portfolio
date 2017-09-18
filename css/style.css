@@ -37,6 +37,7 @@ header p span, .student p span { font-size: 0.8em; font-weight: normal;}
 .content li { list-style-type: none; font-size: 1.1em;}
 li img { float:left; padding-right: 1em; }
 li p { font-size: 0.9em; font-style: italic; }
+.preview{width: 100px;}
 
 footer {
   padding: 0 0.5em;
