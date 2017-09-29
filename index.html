@@ -77,5 +77,34 @@
       ga('create', 'UA-XXXX-Y');
       ga('send', 'pageview');
     </script>
+    <script>
+      const version = '2';
+
+      self.addEventListener('install', event => {
+        event.waitUntil(
+          caches.open(`static-${version}`)
+            .then(cache => cache.addAll([
+              '/css/print.css',
+              '/img/my-photo.jpg',
+              '/img/prev-2048.jpg',
+              '/img/prev-mobile.jpg',
+              '/css/img/prev-pizzeria.jpg',
+              '/img/prev-webperf.jpg',
+              '/img/profilepic.jpg'
+            ]))
+        );
+      });
+
+      self.addEventListener('activate', event => {
+        // …delete old caches…
+      });
+
+      self.addEventListener('fetch', event => {
+        event.respondWith(
+          caches.match(event.request)
+            .then(response => response || fetch(event.request))
+        );
+      });
+    </script>
   </body>
 </html>
