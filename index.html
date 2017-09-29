@@ -69,43 +69,6 @@
     <script async>
       function logCRP(){var a=window.performance.timing,b=a.domContentLoadedEventStart-a.domLoading,c=a.domComplete-a.domLoading,d=document.getElementById("crp-stats");d.textContent="DCL: "+b+"ms, onload: "+c+"ms"}window.addEventListener("load",function(a){logCRP()});
     </script>
-    <script>
-      (function(w,g){w['GoogleAnalyticsObject']=g;
-      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
 
-      // Optional TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-XXXX-Y');
-      ga('send', 'pageview');
-    </script>
-    <script async src="http://www.google-analytics.com/analytics.js"></script>
-    <script>
-      const version = '2';
-
-      self.addEventListener('install', event => {
-        event.waitUntil(
-          caches.open(`static-${version}`)
-            .then(cache => cache.addAll([
-              '/css/print.css',
-              '/img/my-photo.jpg',
-              '/img/prev-2048.jpg',
-              '/img/prev-mobile.jpg',
-              '/css/img/prev-pizzeria.jpg',
-              '/img/prev-webperf.jpg',
-              '/img/profilepic.jpg'
-            ]))
-        );
-      });
-
-      self.addEventListener('activate', event => {
-        // …delete old caches…
-      });
-
-      self.addEventListener('fetch', event => {
-        event.respondWith(
-          caches.match(event.request)
-            .then(response => response || fetch(event.request))
-        );
-      });
-    </script>
   </body>
 </html>
